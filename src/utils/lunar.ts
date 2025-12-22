@@ -15,12 +15,23 @@ export function getLunarDate(date: Date): LunarInfo {
     
     // 获取干支年份（如：乙巳）
     const yearGanzhi = lunar.getYearInGanZhiByLiChun();
+    const jieQi = lunar.getJieQi(); 
+    const festivals = lunar.getFestivals(); 
+    const solarFestivals = solar.getFestivals(); 
+
+    // 获取节日或节气
+    const allFestivals = [...festivals, ...solarFestivals];
+    const festival = allFestivals.length > 0 ? allFestivals[0] : (jieQi || '');
+
+    const lunarDay = day === '初一' ? `${month}月` : day;
 
     return {
-      fullDate: `${month}月${day}`, // 例如：冬月十五
-      date: day === '初一' ? `${month}月` : day, // 初一时显示月份名
-      year: `${yearGanzhi}年`, // 例如：乙巳年
-      month: `${month}月`, // 例如：冬月
+      fullDate: festival ? `${lunarDay} · ${festival}` : lunarDay,
+      date: festival || lunarDay, // 优先显示节日/节气，用于日历格子
+      year: `${yearGanzhi}年`,
+      month: `${month}月`,
+      isFestival: !!festival,
+      festival: festival
     };
   } catch (e) {
     console.error("Lunar date error (lunar-typescript):", e);
@@ -28,7 +39,8 @@ export function getLunarDate(date: Date): LunarInfo {
       fullDate: "加载失败", 
       date: "加载失败", 
       year: "--年",
-      month: "加载失败"
+      month: "加载失败",
+      isFestival: false
     };
   }
 }

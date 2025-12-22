@@ -111,7 +111,12 @@ defineExpose({ refreshToday });
         >
           <div class="day-number-wrapper flex flex-col items-center justify-center">
             <span class="text-2xl md:text-3xl font-bold">{{ day.date.getDate() }}</span>
-            <span class="lunar-text text-sm opacity-60 font-light mt-1">{{ day.lunar.date }}</span>
+            <span 
+              class="lunar-text text-sm font-light mt-1"
+              :class="day.lunar.isFestival ? 'text-blue-300 opacity-100' : 'opacity-60'"
+            >
+              {{ day.lunar.date }}
+            </span>
           </div>
         </div>
       </div>

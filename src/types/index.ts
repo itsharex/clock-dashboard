@@ -19,4 +19,6 @@ export interface LunarInfo {
   month: string;
   date: string;
   year: string;
+  isFestival: boolean;
+  festival?: string;
 }

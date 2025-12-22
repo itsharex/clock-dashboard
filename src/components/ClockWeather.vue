@@ -27,7 +27,7 @@ function toggleSeconds() {
       </div>
       <div class="hidden md:block w-px h-16 mx-16 self-center"></div>
       <div class="flex flex-col items-center md:items-start mt-5">
-        <span class="text-5xl font-medium text-white/90 tracking-wider">{{ lunar.date }}</span>
+        <span class="text-5xl font-medium text-white/90 tracking-wider">{{ lunar.fullDate }}</span>
         <span class="text-4xl tracking-[0.2em] font-light opacity-70 mt-2">{{ lunar.year }}{{ lunar.month }}</span>
       </div>
     </div>
