@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Droplets, PersonStanding, Zap } from 'lucide-vue-next'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useWeatherStore } from '../stores/weather'
 import WeatherSettingsModal from './WeatherSettingsModal.vue'
 

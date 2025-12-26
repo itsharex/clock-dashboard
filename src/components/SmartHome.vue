@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { HAConfig } from '../types'
 import { Blinds, Droplets, Fan, Lightbulb, LightbulbOff, Loader2, Power, RotateCw, Settings, Snowflake, Thermometer, Tv, Zap } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import { computed, ref } from 'vue'
 import { useConfigStore } from '../stores/config'
 
 const emit = defineEmits(['openSettings'])
