@@ -81,6 +81,52 @@ pnpm build
 
 打包产物将生成在 `dist` 目录中。
 
+### 5. Docker 部署
+
+#### 使用预构建镜像（推荐）
+
+```bash
+# 拉取最新镜像
+docker pull ghcr.io/teojs/clock-dashboard:latest
+
+# 运行容器
+docker run -d -p 8080:80 --name clock-dashboard ghcr.io/teojs/clock-dashboard:latest
+```
+
+访问 `http://localhost:8080` 即可使用。
+
+#### 本地构建镜像
+
+```bash
+# 构建镜像
+docker build -t clock-dashboard:latest .
+
+# 运行容器
+docker run -d -p 8080:80 --name clock-dashboard clock-dashboard:latest
+```
+
+#### 使用 Docker Compose
+
+创建 `docker-compose.yml` 文件：
+
+```yaml
+version: '3.8'
+
+services:
+  clock-dashboard:
+    image: ghcr.io/teojs/clock-dashboard:latest
+    container_name: clock-dashboard
+    ports:
+      - '8080:80'
+    restart: unless-stopped
+```
+
+然后运行：
+
+```bash
+docker-compose up -d
+```
+
 ---
 
 ## ⚙️ Home Assistant 智能家居配置
@@ -96,6 +142,7 @@ http:
   cors_allowed_origins:
     - https://your-github-username.github.io # 如果使用 GitHub Pages 部署
     - http://192.168.1.xxx:3000 # 本地开发地址
+    - http://192.168.1.xxx:8080 # Docker 部署地址
 ```
 
 4. **JSON 模式**：您可以直接粘贴以下格式进行批量配置：
