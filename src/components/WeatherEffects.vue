@@ -325,10 +325,6 @@ onUnmounted(() => {
       :class="{ 'opacity-10': showFlash }"
     />
 
-    <!-- Lightning Bolt -->
-    <!-- Moved to Canvas -->
-
-    <!-- Rain Canvas -->
     <canvas
       ref="canvasRef"
       class="absolute inset-0 w-full h-full"

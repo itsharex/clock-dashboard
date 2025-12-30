@@ -9,8 +9,6 @@ const today = ref(new Date())
 const year = computed(() => currentMonthDate.value.getFullYear())
 const month = computed(() => currentMonthDate.value.getMonth())
 
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
 const isCurrentMonth = computed(() => {
   return year.value === today.value.getFullYear() && month.value === today.value.getMonth()
 })
@@ -80,9 +78,6 @@ defineExpose({ refreshToday })
         <h2 class="text-4xl md:text-5xl font-bold tracking-widest">
           {{ year }}年{{ month + 1 }}月
         </h2>
-        <p class="text-lg opacity-50 tracking-[0.4em] uppercase mt-1">
-          {{ monthNames[month] }}
-        </p>
       </div>
       <div class="flex items-center gap-3">
         <button class="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all duration-300" @click="changeMonth(-1)">
@@ -176,7 +171,6 @@ defineExpose({ refreshToday })
 .calendar-header-day {
   text-align: center;
   padding: 10px 0;
-  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 0.5;

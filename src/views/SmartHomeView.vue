@@ -2,8 +2,8 @@
 import { Blinds, Droplets, Fan, Lightbulb, LightbulbOff, Loader2, Power, RotateCw, Settings, Snowflake, Thermometer, Tv, Zap } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
+import SmartSettingsModal from '../components/SmartSettingsModal.vue'
 import { useConfigStore } from '../stores/config'
-import SmartSettingsModal from './SmartSettingsModal.vue'
 
 const configStore = useConfigStore()
 const { haConfig } = storeToRefs(configStore)
@@ -151,14 +151,14 @@ defineExpose({ updateAllStates, entitiesStates })
       </div>
       <div class="flex gap-4">
         <button
-          class="p-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all"
+          class="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all"
           :class="{ 'opacity-50 pointer-events-none': isRefreshing }"
           @click="updateAllStates"
         >
-          <RotateCw class="w-6 h-6" :class="{ 'animate-spin': isRefreshing }" />
+          <RotateCw class="w-5 h-5" :class="{ 'animate-spin': isRefreshing }" />
         </button>
-        <button class="p-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all" @click="showSettings = true">
-          <Settings class="w-6 h-6" />
+        <button class="p-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all" @click="showSettings = true">
+          <Settings class="w-5 h-5" />
         </button>
       </div>
     </div>

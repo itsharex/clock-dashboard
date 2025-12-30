@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import Digit from '../components/Digit.vue'
+import Weather from '../components/Weather.vue'
 import { useTime } from '../hooks/useTime'
-import Digit from './Digit.vue'
-import Weather from './Weather.vue'
 
 const { h1, h2, m1, m2, s1, s2, lunar, now, showSeconds } = useTime()
 

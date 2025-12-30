@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import CalendarView from './components/CalendarView.vue'
-import ClockWeather from './components/ClockWeather.vue'
 import NewYearEgg from './components/NewYearEgg.vue'
-import SmartHome from './components/SmartHome.vue'
 import WeatherEffects from './components/WeatherEffects.vue'
 import { useWeatherStore } from './stores/weather'
+
+import CalendarView from './views/CalendarView.vue'
+import ClockWeatherView from './views/ClockWeatherView.vue'
+import SmartHomeView from './views/SmartHomeView.vue'
 
 const currentPage = ref(1)
 const smartHomeRef = ref<any>(null)
@@ -101,7 +102,6 @@ function handleMouseUp(e: MouseEvent) {
   }
 }
 
-
 onMounted(() => {
   window.addEventListener('keydown', resetAutoReturnTimer)
   window.addEventListener('click', resetAutoReturnTimer)
@@ -128,17 +128,16 @@ onUnmounted(() => {
       :style="{ transform: `translateX(-${currentPage * 100}vw)`, width: '300vw' }"
     >
       <div class="slide-page w-screen h-screen flex items-center justify-center flex-shrink-0">
-        <SmartHome ref="smartHomeRef" />
+        <SmartHomeView ref="smartHomeRef" />
       </div>
       <div class="slide-page w-screen h-screen flex items-center justify-center flex-shrink-0">
-        <ClockWeather />
+        <ClockWeatherView />
       </div>
       <div class="slide-page w-screen h-screen flex items-center justify-center flex-shrink-0">
         <CalendarView ref="calendarRef" />
       </div>
     </div>
 
-    <!-- 元旦彩蛋：独立模块，可随时移除 -->
     <NewYearEgg />
 
     <WeatherEffects v-if="shouldShowWeatherEffects" />
