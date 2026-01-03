@@ -15,6 +15,9 @@
 
 ## 更新日志
 
+- 2026-01-03 （[v1.15.0](https://github.com/teojs/clock-dashboard/releases/tag/v1.15.0)）
+  - 新增空气指数指标；
+
 - 2025-12-29 （[v1.11.0](https://github.com/teojs/clock-dashboard/releases/tag/v1.11.0)）
   - 优化天气城市填写功能；
   - 新增 Docker 部署支持；
