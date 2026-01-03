@@ -86,13 +86,13 @@ onUnmounted(() => {
           <Droplets class="w-8 h-8 text-blue-500/60" />
         </div>
 
-        <div v-if="airQualityData" class="flex items-center justify-end gap-3">
+        <div  class="flex items-center justify-end gap-3">
           <div class="flex items-start gap-2">
             <span id="aqi-val" :class="aqiInfo.color">
-              {{ airQualityData.current.us_aqi }}
+              {{ airQualityData?.current?.us_aqi || '--' }}
             </span>
             <span id="aqi-label" class="text-sm opacity-60 ml-[-4px]">
-              {{ aqiInfo.label }}
+              {{ aqiInfo?.label || '-' }}
             </span>
           </div>
           <Wind class="w-8 h-8 text-teal-500/60" />
