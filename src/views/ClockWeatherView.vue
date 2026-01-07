@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import ClockSettingsModal from '../components/ClockSettingsModal.vue'
 import Digit from '../components/Digit.vue'
 import Weather from '../components/Weather.vue'
@@ -13,6 +13,10 @@ const configStore = useConfigStore()
 const { clockConfig } = storeToRefs(configStore)
 
 const showClockSettings = ref(false)
+
+const baseDelay = computed(() => {
+  return clockConfig.value.showSeconds ? 0 : -2
+})
 </script>
 
 <template>
@@ -47,13 +51,15 @@ const showClockSettings = ref(false)
       @click="showClockSettings = true"
     >
       <Digit
-        :value="h1" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt" :delay="500"
+        :value="h1" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt"
         :trigger="clockConfig.showSeconds ? now.getTime() : Math.floor(now.getTime() / 60000)"
+        :delay="(5 - baseDelay) * 100"
         class="opacity-95"
       />
       <Digit
-        :value="h2" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt" :delay="400"
+        :value="h2" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt"
         :trigger="clockConfig.showSeconds ? now.getTime() : Math.floor(now.getTime() / 60000)"
+        :delay="(4 - baseDelay) * 100"
         class="opacity-95 brightness"
       />
 
@@ -62,13 +68,15 @@ const showClockSettings = ref(false)
       </div>
 
       <Digit
-        :value="m1" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt" :delay="300"
+        :value="m1" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt"
         :trigger="clockConfig.showSeconds ? now.getTime() : Math.floor(now.getTime() / 60000)"
+        :delay="(3 - baseDelay) * 100"
         class="opacity-95"
       />
       <Digit
-        :value="m2" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt" :delay="200"
+        :value="m2" :show-seconds="clockConfig.showSeconds" :enable-tilt="clockConfig.enableTilt"
         :trigger="clockConfig.showSeconds ? now.getTime() : Math.floor(now.getTime() / 60000)"
+        :delay="(2 - baseDelay) * 100"
         class="opacity-95 brightness"
       />
 
@@ -80,12 +88,16 @@ const showClockSettings = ref(false)
           :
         </div>
         <Digit
-          class="second-digit opacity-60" :value="s1" :show-seconds="clockConfig.showSeconds" :delay="100"
-          :enable-tilt="clockConfig.enableTilt" :trigger="now.getTime()"
+          class="second-digit opacity-60" :value="s1" :show-seconds="clockConfig.showSeconds"
+          :trigger="now.getTime()"
+          :delay="100"
+          :enable-tilt="clockConfig.enableTilt"
         />
         <Digit
-          class="second-digit brightness opacity-60" :value="s2" :show-seconds="clockConfig.showSeconds" :delay="0"
-          :enable-tilt="clockConfig.enableTilt" :trigger="now.getTime()"
+          class="second-digit brightness opacity-60" :value="s2" :show-seconds="clockConfig.showSeconds"
+          :trigger="now.getTime()"
+          :delay="0"
+          :enable-tilt="clockConfig.enableTilt"
         />
       </template>
     </div>
