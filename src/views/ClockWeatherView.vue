@@ -124,11 +124,10 @@ const baseDelay = computed(() => {
 .date-day-big {
   font-size: 8rem; /* iOS 12 Fallback: 约 80px */
   line-height: 1;
-  font-weight: 700;
+  font-weight: 800;
   background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: 'SF Pro Rounded', sans-serif;
 }
 
 .clock-display {
