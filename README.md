@@ -230,6 +230,11 @@ http:
 
 ## 📝 更新日志
 
+### v1.17.0 (2026-01-11)
+
+- ✨ 新增黄历弹窗，支持查看农历信息、宜忌、时辰吉凶、彭祖百忌
+- ✨ 新增法定节假日显示
+
 ### v1.16.0 (2026-01-07)
 
 - ✨ 支持自定义时钟颜色
@@ -267,4 +272,4 @@ http:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=teojs/clock-dashboard&type=date&legend=bottom-right)](https://www.star-history.com/#teojs/clock-dashboard&type=date&legend=bottom-right)s
+[![Star History Chart](https://api.star-history.com/svg?repos=teojs/clock-dashboard&type=date&legend=bottom-right)](https://www.star-history.com/#teojs/clock-dashboard&type=date&legend=bottom-right)
