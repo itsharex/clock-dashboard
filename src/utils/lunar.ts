@@ -26,7 +26,7 @@ export function getLunarDate(date: Date): LunarInfo {
     const lunarDay = day === '初一' ? `${month}月` : day
 
     const holiday = HolidayUtil.getHoliday(solar.getYear(), solar.getMonth(), solar.getDay())
-    const holidayLabel = holiday ? (holiday.isWork() ? '调休' : '休') : undefined
+    const holidayLabel = holiday ? (holiday.isWork() ? '班' : '休') : undefined
 
     let fullDate = festival ? `${lunarDay}·${festival}` : lunarDay
     if (holidayLabel) {
@@ -38,9 +38,29 @@ export function getLunarDate(date: Date): LunarInfo {
       date: festival || lunarDay,
       year: `${yearGanzhi}年`,
       month: `${month}月`,
+      yearGanzhi,
+      yearShengxiao: lunar.getYearShengXiao(),
+      monthInChinese: month,
+      monthGanzhi: lunar.getMonthInGanZhi(),
+      dayInChinese: day,
+      dayGanzhi: lunar.getDayInGanZhi(),
       isFestival: !!festival,
       festival,
       holiday: holidayLabel,
+      yi: lunar.getDayYi(),
+      ji: lunar.getDayJi(),
+      chong: lunar.getDayChongDesc(),
+      sha: lunar.getDaySha(),
+      wuxing: lunar.getBaZiWuXing()[4], // 日柱五行
+      pengzu: [lunar.getPengZuGan(), lunar.getPengZuZhi()],
+      hours: lunar.getTimes().slice(0, 12).map(t => ({
+        hour: `${t.getZhi()}时`,
+        ganzhi: t.getGanZhi(),
+        luck: t.getTianShenLuck(),
+        tianShen: t.getTianShen(),
+        js: t.getYi().join(' '),
+        xs: t.getJi().join(' '),
+      })),
     }
   }
   catch (e) {
@@ -50,6 +70,12 @@ export function getLunarDate(date: Date): LunarInfo {
       date: '加载失败',
       year: '--年',
       month: '加载失败',
+      yearGanzhi: '--',
+      yearShengxiao: '--',
+      monthInChinese: '--',
+      monthGanzhi: '--',
+      dayInChinese: '--',
+      dayGanzhi: '--',
       isFestival: false,
     }
   }

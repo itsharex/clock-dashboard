@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import type { LunarInfo } from '../types'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
+import AlmanacModal from '../components/AlmanacModal.vue'
 import { getLunarDate } from '../utils/lunar'
 
 const currentMonthDate = ref(new Date())
 const today = ref(new Date())
+
+const selectedDay = ref<{
+  date: Date
+  lunar: LunarInfo
+} | null>(null)
 
 const year = computed(() => currentMonthDate.value.getFullYear())
 const month = computed(() => currentMonthDate.value.getMonth())
@@ -105,8 +112,9 @@ defineExpose({ refreshToday })
         <div
           v-for="(day, index) in calendarDays"
           :key="index"
-          class="calendar-day"
+          class="calendar-day cursor-pointer hover:bg-white/10 active:scale-95 transition-all duration-200"
           :class="{ 'other-month': day.isOtherMonth, 'today': day.isToday }"
+          @click="selectedDay = day"
         >
           <div class="day-number-wrapper flex flex-col items-center justify-center">
             <span class="text-2xl md:text-3xl font-bold">{{ day.date.getDate() }}</span>
@@ -128,6 +136,14 @@ defineExpose({ refreshToday })
       </div>
     </div>
   </div>
+
+  <AlmanacModal
+    v-if="selectedDay"
+    :show="!!selectedDay"
+    :date="selectedDay.date"
+    :lunar="selectedDay.lunar"
+    @close="selectedDay = null"
+  />
 </template>
 
 <style scoped>

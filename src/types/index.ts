@@ -19,7 +19,27 @@ export interface LunarInfo {
   month: string
   date: string
   year: string
+  yearGanzhi: string // 乙巳
+  yearShengxiao: string // 蛇
+  monthInChinese: string // 十一
+  monthGanzhi: string // 己丑
+  dayInChinese: string // 廿三
+  dayGanzhi: string // 乙酉
   isFestival: boolean
   festival?: string
-  holiday?: string // 如：休、调休
+  holiday?: string // 如：休、班
+  yi?: string[] // 宜
+  ji?: string[] // 忌
+  chong?: string // 冲
+  sha?: string // 煞
+  wuxing?: string // 五行
+  pengzu?: string[] // 彭祖百忌
+  hours?: {
+    hour: string // 时辰 (如: 子时)
+    ganzhi: string // 干支 (如: 甲子)
+    luck: string // 吉凶 (如: 吉/凶)
+    tianShen: string // 天神 (如: 青龙)
+    js: string // 宜
+    xs: string // 忌
+  }[]
 }
