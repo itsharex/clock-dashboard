@@ -63,3 +63,13 @@ export interface Coordinates {
   latitude: number
   longitude: number
 }
+
+export interface DailyWeatherApiResponse {
+  daily: {
+    time: string[]
+    weather_code: number[]
+    temperature_2m_max: number[]
+    temperature_2m_min: number[]
+    precipitation_probability_max: number[]
+  }
+}

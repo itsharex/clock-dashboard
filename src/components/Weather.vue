@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { Droplets, Leaf, PersonStanding, Sun } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, onUnmounted, watch } from 'vue'
-import { useConfigStore } from '../stores/config'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useWeatherStore } from '../stores/weather'
 import { getAqiInfo } from '../utils/weather'
+import WeatherForecastModal from './WeatherForecastModal.vue'
 
 const weatherStore = useWeatherStore()
 const { weatherData, loading, locationText, weatherInfo, refreshInterval, airQualityData } = storeToRefs(weatherStore)
 
-const configStore = useConfigStore()
-const { showDrawer, activeTab } = storeToRefs(configStore)
+const showForecastModal = ref(false)
 
-function openSettings() {
-  activeTab.value = 'weather'
-  showDrawer.value = true
+function openForecast() {
+  showForecastModal.value = true
+}
+
+function closeForecast() {
+  showForecastModal.value = false
 }
 
 let weatherTimer: number
@@ -45,7 +47,7 @@ onUnmounted(() => {
     id="weather-container"
     class="weather-clickable px-4 sm:px-12 grid grid-cols-1 md:grid-cols-3 gap-3 w-full transition-opacity duration-700"
     :class="{ 'opacity-30': loading, 'opacity-100': !loading }"
-    @click="openSettings"
+    @click="openForecast"
   >
     <!-- 状态与定位 -->
     <div class="flex items-center justify-center md:justify-start gap-0">
@@ -125,6 +127,8 @@ onUnmounted(() => {
       </div>
     </div>
   </div>
+
+  <WeatherForecastModal :show="showForecastModal" @close="closeForecast" />
 </template>
 
 <style scoped>
