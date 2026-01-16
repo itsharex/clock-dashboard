@@ -107,11 +107,11 @@ function closeDrawer() {
                 {{ tabs.find(t => t.id === activeTab)?.name }}设置
               </h3>
               <div class="space-x-2">
-                <button class="p-2 hover:bg-white/10 rounded-full text-white/40 hover:text-white transition-all" @click="closeDrawer">
+                <button class="p-2 hover:bg-white/10 rounded-full text-white/70 hover:text-white transition-all" @click="closeDrawer">
                   <X class="w-6 h-6" />
                 </button>
                 <!-- Save Button -->
-                <button class="p-2 hover:bg-white/10 rounded-full text-white/40 hover:text-white transition-all" @click="saveAll">
+                <button class="p-2 hover:bg-white/10 rounded-full text-white/70 hover:text-white transition-all" @click="saveAll">
                   <Save class="w-6 h-6" />
                 </button>
               </div>
