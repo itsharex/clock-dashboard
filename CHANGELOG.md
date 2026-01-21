@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](https://github.com/teojs/clock-dashboard/compare/v1.19.1...v1.20.0) (2026-01-21)
+
+
+### Features
+
+* add layout configuration options and clock-only mode toggle in GeneralSettings, enhance localization for layout settings, and update ClockWeatherView to support clock-only mode ([0c05820](https://github.com/teojs/clock-dashboard/commit/0c058203f2b1e7fa759af023a9e44e00813a0e74))
+
 ### [1.19.1](https://github.com/teojs/clock-dashboard/compare/v1.19.0...v1.19.1) (2026-01-20)
 
 
